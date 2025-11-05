@@ -1,0 +1,41 @@
+/*!
+ * IES Calderón de la Barca - Estilos principales
+ * 
+ * Estructura:
+ * 1. Variables y utilidades
+ * 2. Reset y estilos base
+ * 3. Componentes
+ * 4. Layout
+ * 5. Temas
+ */
+
+/* 1. Variables y utilidades */
+@import 'variables.css';
+@import 'utilities.css';
+
+/* 2. Reset y estilos base */
+@import 'base/reset.css';
+@import 'base/typography.css';
+@import 'base/forms.css';
+
+/* 3. Componentes */
+@import 'components/buttons.css';
+@import 'components/cards.css';
+@import 'components/navbar.css';
+@import 'components/alerts.css';
+@import 'components/modals.css';
+@import 'components/tabs.css';
+@import 'components/tooltips.css';
+
+/* 4. Layout */
+@import 'layout/header.css';
+@import 'layout/footer.css';
+@import 'layout/grid.css';
+@import 'layout/sections.css';
+
+/* 5. Temas */
+@import 'themes/dark.css';
+@import 'themes/print.css';
+
+/* 6. Utilidades al final para sobrescribir estilos si es necesario */
+@import 'utilities/helpers.css';

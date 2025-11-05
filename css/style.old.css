@@ -1,0 +1,41 @@
+/*!
+ * IES Calderón de la Barca - Main Stylesheet
+ * 
+ * This file imports all the necessary CSS modules in the correct order.
+ * DO NOT add styles directly to this file.
+ */
+
+/* 1. Variables and utilities */
+@import 'variables.css';
+@import 'utilities/helpers.css';
+
+/* 2. Base styles */
+@import 'base/reset.css';
+@import 'base/typography.css';
+@import 'base/forms.css';
+
+/* 3. Components */
+@import 'components/buttons.css';
+@import 'components/cards.css';
+@import 'components/navbar.css';
+@import 'components/alerts.css';
+@import 'components/modals.css';
+@import 'components/tabs.css';
+@import 'components/tooltips.css';
+
+/* 4. Layout */
+@import 'layout/header.css';
+@import 'layout/footer.css';
+@import 'layout/grid.css';
+@import 'layout/sections.css';
+
+/* 5. Themes */
+@import 'themes/dark.css';
+@import 'themes/print.css';
+
+/* 6. Page-specific styles */
+@import 'pages/home.css';
+@import 'pages/universidad.css';
+
+/* 7. Utilities (always last for overrides) */
+@import 'utilities/utilities.css';

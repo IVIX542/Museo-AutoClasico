@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Películas y Series | Desde los 2000</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/transitions.css">
+    <style>
+        .media-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .media-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .media-poster {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .media-info {
+            padding: 1.2rem;
+        }
+        
+        .media-title {
+            font-size: 1.1rem;
+            margin: 0 0 0.5rem 0;
+            color: var(--on-surface);
+        }
+        
+        .media-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--on-surface-variant);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .media-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .media-description {
+            font-size: 0.9rem;
+            color: var(--on-surface-variant);
+            margin: 0.5rem 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .media-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+        
+        .media-tag {
+            background: var(--primary-container);
+            color: var(--on-primary-container);
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .media-type {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        select, button.filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--on-surface);
+        }
+        
+        button.filter-btn.active {
+            background: var(--primary);
+            color: var(--on-primary);
+            border-color: var(--primary);
+        }
+        
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .movies-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-button">← Volver</a>
+        <h1>Películas y Series</h1>
+        <button id="theme-toggle">🌙</button>
+    </header>
+
+    <main class="content-container">
+        <section class="content-section">
+            <h2>Lo Mejor desde los 2000</h2>
+            
+            <div class="filter-bar">
+                <select id="type-filter">
+                    <option value="all">Todas</option>
+                    <option value="movie">Películas</option>
+                    <option value="series">Series</option>
+                </select>
+                
+                <select id="genre-filter">
+                    <option value="all">Todos los géneros</option>
+                    <option value="accion">Acción</option>
+                    <option value="drama">Drama</option>
+                    <option value="scifi">Ciencia Ficción</option>
+                    <option value="comedia">Comedia</option>
+                    <option value="suspense">Suspense</option>
+                    <option value="fantasia">Fantasía</option>
+                </select>
+                
+                <select id="year-filter">
+                    <option value="all">Todos los años</option>
+                    <option value="2020s">2020 - Actualidad</option>
+                    <option value="2010s">2010 - 2019</option>
+                    <option value="2000s">2000 - 2009</option>
+                </select>
+            </div>
+            
+            <div class="movies-grid" id="media-container">
+                <!-- El contenido se cargará con JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Dark mode functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Check for saved user preference, if any, on page load
+        const currentTheme = localStorage.getItem('theme') || 
+                           (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        } else {
+            document.body.classList.remove('dark-mode');
+            themeToggle.textContent = '🌙';
+        }
+
+        // Toggle theme when button is clicked
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            }
+        });
+
+        // Datos de películas y series
+        const mediaItems = [
+            {
+                id: 1,
+                title: 'El Padrino',
+                year: 1972,
+                type: 'movie',
+                genre: ['drama', 'crimen'],
+                rating: 9.2,
+                image: '../images/peliculas/el-padrino.jpg',
+                description: 'La historia de la familia Corleone, una de las dinastías criminales más poderosas de Estados Unidos.',
+                director: 'Francis Ford Coppola',
+                duration: '2h 55m'
+            },
+            {
+                id: 2,
+                title: 'Breaking Bad',
+                year: 2008,
+                type: 'series',
+                genre: ['drama', 'crimen', 'suspense'],
+                rating: 9.5,
+                seasons: 5,
+                image: '../images/peliculas/breaking-bad.jpg',
+                description: 'Un profesor de química con cáncer terminal se asocia a un exalumno para fabricar y vender metanfetamina.',
+                creator: 'Vince Gilligan',
+                episodes: '62 episodios'
+            },
+            {
+                id: 3,
+                title: 'El Caballero Oscuro',
+                year: 2008,
+                type: 'movie',
+                genre: ['accion', 'crimen', 'drama'],
+                rating: 9.0,
+                image: '../images/peliculas/batman.jpg',
+                description: 'Batman se enfrenta al Joker, un criminal que siembra el caos en Ciudad Gótica.',
+                director: 'Christopher Nolan',
+                duration: '2h 32m'
+            },
+            {
+                id: 4,
+                title: 'Stranger Things',
+                year: 2016,
+                type: 'series',
+                genre: ['scifi', 'drama', 'fantasia'],
+                rating: 8.7,
+                seasons: 4,
+                image: '../images/peliculas/stranger-things.jpg',
+                description: 'Un grupo de amigos se enfrenta a fuerzas sobrenaturales en su pequeño pueblo, mientras buscan a su amigo desaparecido.',
+                creator: 'Hermanos Duffer',
+                episodes: '34 episodios'
+            },
+            {
+                id: 5,
+                title: 'Parásitos',
+                year: 2019,
+                type: 'movie',
+                genre: ['drama', 'suspense'],
+                rating: 8.6,
+                image: '../images/peliculas/parasitos.jpg',
+                description: 'Los miembros de una familia pobre que se hacen pasar por profesionales cualificados para trabajar para una familia adinerada.',
+                director: 'Bong Joon-ho',
+                duration: '2h 12m',
+                oscar: true
+            },
+            {
+                id: 6,
+                title: 'Juego de Tronos',
+                year: 2011,
+                type: 'series',
+                genre: ['fantasia', 'drama', 'aventura'],
+                rating: 9.2,
+                seasons: 8,
+                image: '../images/peliculas/got.jpg',
+                description: 'Varias familias nobles luchan por el control del Trono de Hierro en las tierras de Poniente.',
+                creator: 'David Benioff, D.B. Weiss',
+                episodes: '73 episodios',
+                emmy: true
+            },
+            {
+                id: 7,
+                title: 'Dune',
+                year: 2021,
+                type: 'movie',
+                genre: ['scifi', 'aventura'],
+                rating: 8.0,
+                image: '../images/peliculas/dune.jpg',
+                description: 'El joven Paul Atreides viaja al planeta más peligroso del universo para asegurar el futuro de su familia y su pueblo.',
+                director: 'Denis Villeneuve',
+                duration: '2h 35m',
+                oscar: true
+            },
+            {
+                id: 8,
+                title: 'The Mandalorian',
+                year: 2019,
+                type: 'series',
+                genre: ['scifi', 'aventura', 'western'],
+                rating: 8.7,
+                seasons: 3,
+                image: '../images/peliculas/mandalorian.jpg',
+                description: 'Las aventuras de un cazarrecompensas en los confines de la galaxia, lejos de la autoridad de la Nueva República.',
+                creator: 'Jon Favreau',
+                episodes: '24 episodios',
+                emmy: true
+            }
+        ];
+
+        // Función para renderizar las tarjetas
+        function renderMedia(mediaToRender = mediaItems) {
+            const container = document.getElementById('media-container');
+            container.innerHTML = '';
+
+            if (mediaToRender.length === 0) {
+                container.innerHTML = '<p>No se encontraron resultados con los filtros seleccionados.</p>';
+                return;
+            }
+
+            mediaToRender.forEach(media => {
+                const mediaElement = document.createElement('article');
+                mediaElement.className = 'media-card';
+                mediaElement.dataset.type = media.type;
+                mediaElement.dataset.genre = media.genre.join(' ');
+                mediaElement.dataset.decade = getDecade(media.year);
+
+                const typeLabel = media.type === 'movie' ? 'Película' : 'Serie';
+                const yearInfo = media.type === 'movie' ? media.year : `${media.year} - ${media.seasons} temporadas`;
+                
+                mediaElement.innerHTML = `
+                    <img src="${media.image}" alt="${media.title}" class="media-poster" onerror="this.src='../images/peliculas/default.jpg'">
+                    <span class="media-type">${typeLabel}</span>
+                    <div class="media-info">
+                        <h3 class="media-title">${media.title}</h3>
+                        <div class="media-meta">
+                            <span>${yearInfo}</span>
+                            <span class="media-rating">
+                                <span>★</span> ${media.rating}
+                            </span>
+                        </div>
+                        <p class="media-description">${media.description}</p>
+                        <div class="media-tags">
+                            ${media.genre.map(genre => `<span class="media-tag">${formatGenre(genre)}</span>`).join('')}
+                            ${media.oscar ? '<span class="media-tag oscar">🏆 Oscar</span>' : ''}
+                            ${media.emmy ? '<span class="media-tag emmy">🏆 Emmy</span>' : ''}
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(mediaElement);
+            });
+        }
+
+        // Funciones auxiliares
+        function getDecade(year) {
+            if (year >= 2020) return '2020s';
+            if (year >= 2010) return '2010s';
+            return '2000s';
+        }
+
+        function formatGenre(genre) {
+            const genres = {
+                'accion': 'Acción',
+                'drama': 'Drama',
+                'scifi': 'Ciencia Ficción',
+                'comedia': 'Comedia',
+                'suspense': 'Suspense',
+                'fantasia': 'Fantasía',
+                'crimen': 'Crimen',
+                'aventura': 'Aventura',
+                'western': 'Western'
+            };
+            return genres[genre] || genre;
+        }
+
+        // Filtrado de contenido
+        function filterMedia() {
+            const typeFilter = document.getElementById('type-filter').value;
+            const genreFilter = document.getElementById('genre-filter').value;
+            const yearFilter = document.getElementById('year-filter').value;
+
+            return mediaItems.filter(media => {
+                // Filtrar por tipo
+                if (typeFilter !== 'all' && media.type !== typeFilter) return false;
+
+                // Filtrar por género
+                if (genreFilter !== 'all' && !media.genre.includes(genreFilter)) return false;
+
+                // Filtrar por década
+                if (yearFilter !== 'all') {
+                    const decade = getDecade(media.year);
+                    if (decade !== yearFilter) return false;
+                }
+
+                return true;
+            });
+        }
+
+        // Event Listeners para los filtros
+        document.addEventListener('DOMContentLoaded', () => {
+            // Renderizar contenido al cargar la página
+            renderMedia();
+
+            // Event listeners para los filtros
+            document.querySelectorAll('select').forEach(select => {
+                select.addEventListener('change', () => {
+                    const filteredMedia = filterMedia();
+                    renderMedia(filteredMedia);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

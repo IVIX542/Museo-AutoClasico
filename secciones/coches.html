@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Coches | Concesionario</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/transitions.css">
+    <style>
+        .car-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .car-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .car-info {
+            padding: 1.5rem;
+        }
+        
+        .car-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .spec-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--primary);
+        }
+        
+        .price-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--on-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        select, button.filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--on-surface);
+        }
+        
+        button.filter-btn.active {
+            background: var(--primary);
+            color: var(--on-primary);
+            border-color: var(--primary);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #ff5722;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 768px) {
+            .car-specs {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-button">← Volver</a>
+        <h1>Guía de Coches</h1>
+        <button id="theme-toggle">🌙</button>
+    </header>
+
+    <main class="content-container">
+        <section class="content-section">
+            <h2>Nuestros Vehículos</h2>
+            
+            <div class="filter-bar">
+                <select id="type-filter">
+                    <option value="all">Todos los tipos</option>
+                    <option value="suv">SUV</option>
+                    <option value="deportivo">Deportivo</option>
+                    <option value="familiar">Familiar</option>
+                    <option value="electrico">Eléctrico</option>
+                </select>
+                
+                <select id="price-filter">
+                    <option value="all">Cualquier precio</option>
+                    <option value="0-20000">Menos de 20.000€</option>
+                    <option value="20000-40000">20.000€ - 40.000€</option>
+                    <option value="40000">Más de 40.000€</option>
+                </select>
+                
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="nuevo">Nuevos</button>
+                    <button class="filter-btn" data-filter="oferta">Ofertas</button>
+                </div>
+            </div>
+            
+            <div class="cars-grid" id="cars-container">
+                <!-- Los coches se cargarán aquí con JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Dark mode functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Check for saved user preference, if any, on page load
+        const currentTheme = localStorage.getItem('theme') || 
+                           (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        } else {
+            document.body.classList.remove('dark-mode');
+            themeToggle.textContent = '🌙';
+        }
+
+        // Toggle theme when button is clicked
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            }
+        });
+        // Datos de los coches
+        const coches = [
+            {
+                id: 1,
+                marca: 'Audi',
+                modelo: 'A3 Sportback',
+                tipo: 'compacto',
+                precio: 32900,
+                imagen: '../images/coches/audi-a3.jpg',
+                nuevo: true,
+                oferta: false,
+                especificaciones: {
+                    potencia: '150 CV',
+                    combustible: 'Gasolina',
+                    cambio: 'Automático',
+                    aceleracion: '8.4s (0-100 km/h)',
+                    consumo: '5.8L/100km'
+                },
+                descripcion: 'El Audi A3 Sportback combina diseño deportivo con tecnología puntera. Ideal para quienes buscan elegancia y prestaciones en un vehículo compacto.'
+            },
+            {
+                id: 2,
+                marca: 'Volkswagen',
+                modelo: 'Tiguan eHybrid',
+                tipo: 'suv',
+                precio: 45900,
+                imagen: '../images/coches/vw-tiguan.jpg',
+                nuevo: true,
+                oferta: true,
+                especificaciones: {
+                    potencia: '245 CV',
+                    combustible: 'Híbrido enchufable',
+                    cambio: 'Automático',
+                    autonomiaElectrica: '50 km',
+                    consumo: '1.8L/100km'
+                },
+                descripcion: 'El Tiguan eHybrid ofrece la versatilidad de un SUV con la eficiencia de la tecnología híbrida enchufable. Perfecto para ciudad y carretera.'
+            },
+            {
+                id: 3,
+                marca: 'Seat',
+                modelo: 'Leon FR',
+                tipo: 'deportivo',
+                precio: 28900,
+                imagen: '../images/coches/seat-leon.jpg',
+                nuevo: false,
+                oferta: true,
+                especificaciones: {
+                    potencia: '190 CV',
+                    combustible: 'Gasolina',
+                    cambio: 'Automático',
+                    aceleracion: '7.4s (0-100 km/h)',
+                    consumo: '6.3L/100km'
+                },
+                descripcion: 'El SEAT León FR ofrece un diseño deportivo y dinámico, con un interior tecnológico y conectado para una experiencia de conducción emocionante.'
+            },
+            {
+                id: 4,
+                marca: 'Tesla',
+                modelo: 'Model 3',
+                tipo: 'electrico',
+                precio: 44990,
+                imagen: '../images/coches/tesla-model3.jpg',
+                nuevo: true,
+                oferta: false,
+                especificaciones: {
+                    potencia: '283 CV',
+                    autonomia: '491 km',
+                    aceleracion: '5.6s (0-100 km/h)',
+                    velocidadMax: '225 km/h',
+                    cargaRapida: '250 kW'
+                },
+                descripcion: 'El Tesla Model 3 redefine la movilidad eléctrica con su diseño minimalista, tecnología avanzada y prestaciones excepcionales.'
+            }
+        ];
+
+        // Función para formatear el precio
+        function formatPrice(price) {
+            return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(price);
+        }
+
+        // Función para renderizar los coches
+        function renderCars(carsToRender = coches) {
+            const container = document.getElementById('cars-container');
+            container.innerHTML = '';
+
+            if (carsToRender.length === 0) {
+                container.innerHTML = '<p>No se encontraron vehículos con los filtros seleccionados.</p>';
+                return;
+            }
+
+            carsToRender.forEach(coche => {
+                const carElement = document.createElement('article');
+                carElement.className = 'car-card';
+                carElement.dataset.type = coche.tipo;
+                carElement.dataset.precio = coche.precio;
+                if (coche.nuevo) carElement.dataset.nuevo = 'true';
+                if (coche.oferta) carElement.dataset.oferta = 'true';
+
+                // Crear especificaciones
+                let specsHTML = '';
+                for (const [key, value] of Object.entries(coche.especificaciones)) {
+                    specsHTML += `
+                        <div class="spec-item">
+                            <span class="spec-icon">${getIcon(key)}</span>
+                            <div>
+                                <div class="spec-value">${value}</div>
+                                <div class="spec-label">${formatSpecName(key)}</div>
+                            </div>
+                        </div>`;
+                }
+
+                carElement.innerHTML = `
+                    <img src="${coche.imagen}" alt="${coche.marca} ${coche.modelo}" class="car-image" onerror="this.src='../images/coches/default.jpg'">
+                    <div class="car-info">
+                        <h3>${coche.marca} ${coche.modelo}</h3>
+                        <p>${coche.descripcion}</p>
+                        
+                        <div class="car-specs">
+                            ${specsHTML}
+                        </div>
+                        
+                        <div class="price-tag">${formatPrice(coche.precio)}</div>
+                        ${coche.oferta ? '<span class="badge">¡Oferta Especial!</span>' : ''}
+                        ${coche.nuevo ? '<span class="badge">Nuevo</span>' : ''}
+                    </div>
+                `;
+                
+                container.appendChild(carElement);
+            });
+        }
+
+        // Funciones auxiliares
+        function getIcon(specName) {
+            const icons = {
+                potencia: '⚡',
+                combustible: '⛽',
+                cambio: '⚙️',
+                aceleracion: '🏁',
+                consumo: '📊',
+                autonomia: '🔋',
+                autonomiaElectrica: '🔌',
+                velocidadMax: '🚀',
+                cargaRapida: '⚡🔌'
+            };
+            return icons[specName] || 'ℹ️';
+        }
+
+        function formatSpecName(specName) {
+            const names = {
+                potencia: 'Potencia',
+                combustible: 'Combustible',
+                cambio: 'Cambio',
+                aceleracion: 'Aceleración',
+                consumo: 'Consumo',
+                autonomia: 'Autonomía',
+                autonomiaElectrica: 'Autonomía Eléctrica',
+                velocidadMax: 'Velocidad Máx',
+                cargaRapida: 'Carga Rápida'
+            };
+            return names[specName] || specName;
+        }
+
+        // Filtrado de coches
+        function filterCars() {
+            const typeFilter = document.getElementById('type-filter').value;
+            const priceFilter = document.getElementById('price-filter').value;
+            const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter;
+
+            return coches.filter(coche => {
+                // Filtrar por tipo
+                if (typeFilter !== 'all' && coche.tipo !== typeFilter) return false;
+
+                // Filtrar por precio
+                if (priceFilter !== 'all') {
+                    const [min, max] = priceFilter.split('-').map(Number);
+                    if (max && (coche.precio < min || coche.precio > max)) return false;
+                    if (!max && coche.precio < min) return false;
+                }
+
+                // Filtrar por estado (nuevo/oferta)
+                if (activeFilter === 'nuevo' && !coche.nuevo) return false;
+                if (activeFilter === 'oferta' && !coche.oferta) return false;
+
+                return true;
+            });
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Renderizar coches al cargar la página
+            renderCars();
+
+            // Filtros
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelector('.filter-btn.active')?.classList.remove('active');
+                    btn.classList.add('active');
+                    const filteredCars = filterCars();
+                    renderCars(filteredCars);
+                });
+            });
+
+            document.getElementById('type-filter').addEventListener('change', () => {
+                const filteredCars = filterCars();
+                renderCars(filteredCars);
+            });
+
+            document.getElementById('price-filter').addEventListener('change', () => {
+                const filteredCars = filterCars();
+                renderCars(filteredCars);
+            });
+        });
+    </script>
+</body>
+</html>

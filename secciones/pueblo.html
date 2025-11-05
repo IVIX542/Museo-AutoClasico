@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valdemoro - Madrid</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/transitions.css">
+    <style>
+        .hero-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .place-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+        .place-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .place-info {
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-button">← Volver</a>
+        <h1>Valdemoro</h1>
+        <button id="theme-toggle">🌙</button>
+    </header>
+
+    <main class="content-container">
+        <section class="content-section">
+            <h2>Historia de Valdemoro</h2>
+            <img src="../images/valdemoro/plaza.jpg" alt="Plaza de Valdemoro" class="hero-image">
+            <p>Valdemoro es un municipio español situado en la Comunidad de Madrid, a unos 26 km al sur de la capital. Con una población que supera los 77.000 habitantes, es una de las localidades más importantes del sur de la región.</p>
+            
+            <h3>Orígenes e Historia</h3>
+            <p>Los orígenes de Valdemoro se remontan a la época prerromana, aunque fue durante la dominación musulmana cuando se consolidó como asentamiento. Tras la Reconquista, pasó a formar parte del Reino de Castilla. En el siglo XV, los Reyes Católicos otorgaron a Valdemoro el título de Villa.</p>
+            
+            <h3>Patrimonio Histórico</h3>
+            <p>El casco antiguo de Valdemoro alberga importantes monumentos como la Iglesia Parroquial de Nuestra Señora de la Asunción, del siglo XVII, y el Convento de las Clarisas del Santísimo Sacramento, fundado en 1616.</p>
+        </section>
+        
+        <section class="content-section">
+            <h2>Lugares de Interés</h2>
+            <div class="places-grid">
+                <article class="place-card">
+                    <img src="../images/valdemoro/iglesia.jpg" alt="Iglesia de la Asunción">
+                    <div class="place-info">
+                        <h3>Iglesia de la Asunción</h3>
+                        <p>Monumento histórico-artístico de estilo herreriano con elementos barrocos. Destaca su impresionante torre y su retablo mayor.</p>
+                    </div>
+                </article>
+                
+                <article class="place-card">
+                    <img src="../images/valdemoro/ayuntamiento.jpg" alt="Ayuntamiento de Valdemoro">
+                    <div class="place-info">
+                        <h3>Ayuntamiento</h3>
+                        <p>Edificio del siglo XVII que ha sido testigo de la historia de la ciudad. Su fachada principal es un ejemplo de arquitectura civil barroca.</p>
+                    </div>
+                </article>
+                
+                <article class="place-card">
+                    <img src="../images/valdemoro/parque.jpg" alt="Parque Bolitas del Airón">
+                    <div class="place-info">
+                        <h3>Parque Bolitas del Airón</h3>
+                        <p>Extenso parque urbano con zonas verdes, estanques y áreas de ocio. Lugar ideal para pasear y disfrutar de la naturaleza.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Cultura y Tradiciones</h2>
+            <h3>Fiestas Patronales</h3>
+            <p>Las fiestas en honor a la Virgen del Rosario, patrona de Valdemoro, se celebran a principios de octubre con verbenas, encierros y actividades culturales.</p>
+            
+            <h3>Gastronomía</h3>
+            <p>La cocina típica de Valdemoro incluye platos como el cocido madrileño, las migas, las torrijas y las rosquillas tontas y listas, típicas de San Isidro.</p>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

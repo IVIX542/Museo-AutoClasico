@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IES Calderón de la Barca - Centro educativo de referencia en Pinto, Madrid. Ofrecemos ESO, Bachillerato y Ciclos Formativos de Grado Medio y Superior.">
+    <title>IES Calderón de la Barca | Educación de Calidad en Pinto</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+</head>
+<body class="antialiased text-gray-900 bg-gray-50 dark:bg-gray-900">
+    <!-- Barra de navegación -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                        <span class="flex items-center">
+                            <i class="fas fa-graduation-cap mr-2"></i>
+                            IES Calderón
+                        </span>
+                    </a>
+                </div>
+                
+                <!-- Menú de navegación -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Inicio</a>
+                    <a href="#oferta" class="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Oferta Educativa</a>
+                    <a href="#instalaciones" class="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Instalaciones</a>
+                    <a href="#proyectos" class="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Proyectos</a>
+                    <a href="#contacto" class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-opacity">Contacto</a>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" aria-label="Cambiar tema">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+                    </button>
+                </div>
+                
+                <!-- Botón móvil -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 dark:text-gray-200">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Menú móvil -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#inicio" class="block py-2 text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Inicio</a>
+                <a href="#oferta" class="block py-2 text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Oferta Educativa</a>
+                <a href="#instalaciones" class="block py-2 text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Instalaciones</a>
+                <a href="#proyectos" class="block py-2 text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Proyectos</a>
+                <a href="#contacto" class="mt-2 inline-block px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-opacity">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <a href="../index.html" class="back-button">← Volver</a>
+        <h1>IES Calderón de la Barca</h1>
+    </header>
+
+    <div class="hero">
+        <h1>Instituto de Innovación Tecnológica</h1>
+        <p>Formando profesionales en el ámbito tecnológico desde hace más de 40 años</p>
+    </div>
+
+    <main class="container">
+        <section class="content-section">
+            <h2 class="section-title">Bienvenidos</h2>
+            <p class="lead-text">El IES Calderón de la Barca es un centro educativo público situado en Pinto, Madrid, reconocido como Instituto de Innovación Tecnológica. Destacamos por nuestra oferta educativa en Formación Profesional, especialmente en el ámbito tecnológico, ofreciendo una formación de calidad que prepara a nuestros estudiantes para los retos del mercado laboral actual.</p>
+            
+            <div class="info-card">
+                <h3>📌 Datos del Centro</h3>
+                <ul class="contact-info">
+                    <li><strong>📍 Ubicación:</strong> 28320 Pinto, Madrid</li>
+                    <li><strong>📞 Teléfono:</strong> <a href="tel:+34916706645">91 670 66 45</a></li>
+                    <li><strong>✉️ Email:</strong> <a href="mailto:jestudios.ies.calderon.pinto@educa.madrid.org">jestudios.ies.calderon.pinto@educa.madrid.org</a></li>
+                    <li><strong>🌐 Web oficial:</strong> <a href="https://www.iescalderon.es/" target="_blank" rel="noopener">www.iescalderon.es</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección de Oferta Educativa -->
+        <section id="oferta" class="py-16 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Nuestra Oferta</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">Oferta Educativa</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mt-4 rounded-full"></div>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Formación integral adaptada a las demandas actuales del mercado laboral y la educación superior</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- ESO -->
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                        <div class="p-2 bg-gradient-to-r from-blue-500 to-blue-600">
+                            <div class="p-4 bg-white dark:bg-gray-700 rounded-lg">
+                                <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl mb-4">
+                                    <i class="fas fa-school"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Educación Secundaria</h3>
+                                <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        ESO (1º a 4º)
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        Programa de Mejora del Aprendizaje
+                                    </li>
+                                </ul>
+                                <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-600">
+                                    <span class="text-sm font-medium text-blue-600 dark:text-blue-400">12-16 años</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bachillerato -->
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                        <div class="p-2 bg-gradient-to-r from-purple-500 to-pink-500">
+                            <div class="p-4 bg-white dark:bg-gray-700 rounded-lg">
+                                <div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-400 text-2xl mb-4">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Bachillerato</h3>
+                                <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-atom text-purple-500 mr-2"></i>
+                                        Ciencias y Tecnología
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-landmark text-purple-500 mr-2"></i>
+                                        Humanidades y CC. Sociales
+                                    </li>
+                                </ul>
+                                <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-600">
+                                    <span class="text-sm font-medium text-purple-600 dark:text-purple-400">2 cursos académicos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CFGM -->
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                        <div class="p-2 bg-gradient-to-r from-green-500 to-emerald-500">
+                            <div class="p-4 bg-white dark:bg-gray-700 rounded-lg">
+                                <div class="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 text-2xl mb-4">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Grado Medio</h3>
+                                <div class="mb-3">
+                                    <h4 class="font-semibold text-gray-800 dark:text-gray-200 flex items-center">
+                                        <i class="fas fa-server text-green-500 mr-2"></i>
+                                        SMR
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Sistemas Microinformáticos y Redes</p>
+                                </div>
+                                <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-600">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm font-medium text-green-600 dark:text-green-400">2.000 horas</span>
+                                        <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 text-xs rounded-full">Dual</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CFGS -->
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                        <div class="p-2 bg-gradient-to-r from-red-500 to-orange-500">
+                            <div class="p-4 bg-white dark:bg-gray-700 rounded-lg">
+                                <div class="w-14 h-14 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center text-red-600 dark:text-red-400 text-2xl mb-4">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Grado Superior</h3>
+                                <div class="mb-3">
+                                    <h4 class="font-semibold text-gray-800 dark:text-gray-200 flex items-center">
+                                        <i class="fas fa-mobile-alt text-red-500 mr-2"></i>
+                                        DAM
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Desarrollo de Aplicaciones Multiplataforma</p>
+                                </div>
+                                <div class="mb-3">
+                                    <h4 class="font-semibold text-gray-800 dark:text-gray-200 flex items-center">
+                                        <i class="fas fa-network-wired text-red-500 mr-2"></i>
+                                        ASIR
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Administración de Sistemas Informáticos en Red</p>
+                                </div>
+                                <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-600">
+                                    <span class="text-sm font-medium text-red-600 dark:text-red-400">2.000 horas (2 cursos)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <a href="#contacto" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition-opacity">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Más información
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Instalaciones -->
+        <section id="instalaciones" class="py-16 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Nuestras Instalaciones</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">Espacios para Crecer</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mt-4 rounded-full"></div>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Contamos con instalaciones modernas y equipadas para ofrecer la mejor experiencia educativa</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Aula de Emprendimiento -->
+                    <div class="group relative rounded-2xl overflow-hidden shadow-xl h-80">
+                        <img src="../images/valdemoro/valdemoro-fiestas.jpg" alt="Aula de emprendimiento" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                            <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-lightbulb text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Aula de Emprendimiento</h3>
+                                <p class="text-gray-200 text-sm">Espacio innovador para desarrollar proyectos empresariales y fomentar el espíritu emprendedor.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aula Planeta Azul -->
+                    <div class="group relative rounded-2xl overflow-hidden shadow-xl h-80">
+                        <img src="../images/valdemoro/valdemoro-gastronomia.jpg" alt="Aula Planeta Azul" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                            <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-compass text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Aula Planeta Azul</h3>
+                                <p class="text-gray-200 text-sm">Espacio de orientación académica y profesional para guiar a nuestros estudiantes en su trayectoria formativa.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aula TEA -->
+                    <div class="group relative rounded-2xl overflow-hidden shadow-xl h-80">
+                        <img src="../images/valdemoro/valdemoro-ayuntamiento.jpg" alt="Aula TEA" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                            <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-heart text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Aula TEA</h3>
+                                <p class="text-gray-200 text-sm">Espacio especializado para la atención educativa de estudiantes con Trastorno del Espectro Autista.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aulas de Informática -->
+                    <div class="group relative rounded-2xl overflow-hidden shadow-xl h-80">
+                        <img src="../images/valdemoro/valdemoro-fiestas.jpg" alt="Aulas de Informática" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                            <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-laptop-code text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Aulas de Informática</h3>
+                                <p class="text-gray-200 text-sm">Equipadas con tecnología de última generación para la formación en desarrollo de software y redes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Laboratorios -->
+                    <div class="group relative rounded-2xl overflow-hidden shadow-xl h-80">
+                        <img src="../images/valdemoro/valdemoro-gastronomia.jpg" alt="Laboratorios" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                            <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-flask text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Laboratorios</h3>
+                                <p class="text-gray-200 text-sm">Espacios equipados para prácticas de ciencias y tecnología con materiales y equipamiento especializado.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Biblioteca -->
+                    <div class="group relative rounded-2xl overflow-hidden shadow-xl h-80">
+                        <img src="../images/valdemoro/valdemoro-ayuntamiento.jpg" alt="Biblioteca" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                            <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center mb-3">
+                                    <i class="fas fa-book text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Biblioteca</h3>
+                                <p class="text-gray-200 text-sm">Amplio espacio de estudio con una gran variedad de recursos educativos y zona de trabajo en grupo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <button class="inline-flex items-center px-6 py-3 border-2 border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400 font-medium rounded-lg hover:bg-indigo-50 dark:hover:bg-gray-800 transition-colors">
+                        <i class="fas fa-images mr-2"></i>
+                        Ver galería completa
+                    </button>
+                </div>
+            </div>
+        </section>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image-container">
+                        <img src="../images/valdemoro/valdemoro-ayuntamiento.jpg" alt="Aula TEA" loading="lazy">
+                        <div class="gallery-overlay">
+                            <a href="#" class="gallery-button">Ver más</a>
+                        </div>
+                    </div>
+                    <p>💙 Aula TEA</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">✨ Proyectos y Programas</h2>
+            <p class="section-subtitle">Iniciativas que enriquecen nuestra oferta educativa</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Erasmus+</h3>
+                    <p>Poseemos la Carta Erasmus de Educación Superior (Carta ECHE) 2021-2027, facilitando la movilidad de estudiantes y profesores.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Instituto de Innovación</h3>
+                    <p>Reconocidos como Instituto de Innovación Tecnológica, implementamos las últimas tendencias educativas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">♻️</div>
+                    <h3>Escuelas Sostenibles</h3>
+                    <p>Comprometidos con la sostenibilidad y el cuidado del medio ambiente a través de diversas iniciativas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Programa 4+Empresa</h3>
+                    <p>Acercamos el mundo laboral a las aulas con estancias formativas en empresas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Patios Inclusivos</h3>
+                    <p>Fomentamos la inclusión y la convivencia en los espacios comunes del centro.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Intercambios Internacionales</h3>
+                    <p>Programa de intercambio con Alemania y otros países para una experiencia educativa global.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>📞 Contacto</h3>
+                <p><strong>Dirección:</strong> Calle de la Tenería, s/n<br>28320 Pinto, Madrid</p>
+                <p><strong>Teléfono:</strong> <a href="tel:+34916921010">916 92 10 10</a></p>
+                <p><strong>Email:</strong> <a href="mailto:ies.calderon.pinto@educa.madrid.org">ies.calderon.pinto@educa.madrid.org</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>🕒 Horarios</h3>
+                <p><strong>Secretaría:</strong><br>
+                Lunes a Viernes: 9:00 - 14:00<br>
+                Lunes y Miércoles: 16:30 - 19:30</p>
+                <p><strong>Horario lectivo:</strong><br>
+                Mañanas: 8:15 - 14:45<br>
+                Tardes: 15:45 - 21:15</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>📱 Síguenos</h3>
+                <p>Mantente informado de nuestras novedades y eventos</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <span>Twitter</span>🐦
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <span>Facebook</span>📘
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <span>Instagram</span>📸
+                    </a>
+                    <a href="#" class="social-icon" aria-label="YouTube">
+                        <span>YouTube</span>▶️
+                    </a>
+                </div>
+                
+                <div class="newsletter">
+                    <h4>📧 Boletín informativo</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>📍 Cómo llegar</h3>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.191134986948!2d-3.701847684397648!3d40.39113617937264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4227e6f7d5a8f9%3A0x9e9e9e9e9e9e9e9e!2sIES%20Calder%C3%B3n%20de%20la%20Barca!5e0!3m2!1ses!2ses!4v1620000000000!5m2!1ses!2ses" 
+                        width="100%" 
+                        height="200" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-links">
+                <a href="#">Aviso Legal</a>
+                <span>•</span>
+                <a href="#">Política de Privacidad</a>
+                <span>•</span>
+                <a href="#">Política de Cookies</a>
+                <span>•</span>
+                <a href="#">Accesibilidad</a>
+            </div>
+            <p>&copy; 2025 IES Calderón de la Barca - Centro Público de Formación Profesional</p>
+            <p class="credits">Diseñado con ❤️ para futuros profesionales</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
