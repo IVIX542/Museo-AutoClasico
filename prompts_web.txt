@@ -130,3 +130,6 @@ Elimina el botón volver arriba
 
 ---V5---
 Cambia el botón comprar entradas por un formulario para reservar fecha de visita
+
+---V6---
+Añade alguna animación de fondo
