@@ -136,3 +136,6 @@ Añade alguna animación de fondo
 
 ---V7---
 Añade la posibilidad de filtrar los cohes (por año, categoría, motor...)
+
+---V8---
+Ahora, añade más coches para probar todos los filtros posibles. Recuerda proporcionarme los prompts para generar las imágenes.

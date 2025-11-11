@@ -41,3 +41,27 @@ Mercedes-Benz 300SL Roadster de 1963 en plata con capota roja, fotografiado en u
 10. Ferrari 250 GT California
 Ferrari 250 GT California Spyder de 1961 en azul scuro, fotografiado en la costa de California. Vista lateral mostrando sus líneas elegantes y el volante a la derecha. Estilo fotográfico de época con grano fino, 8K, detalle extremo.
 
+---V8---
+11. Cadillac Series 62 (1948) - cadillacSeries62.png
+Prompt: "Vintage 1948 Cadillac Series 62 luxury coupe in dark blue with chrome details, parked on a classic American street in the 1940s, photorealistic, high detail, golden hour lighting"
+
+12. Jaguar XK120 (1949) - jaguarXK120.png
+Prompt: "1949 Jaguar XK120 roadster in British racing green with tan leather interior, driving through English countryside, side profile, photorealistic, high detail"
+
+13. Chevrolet Bel Air (1955) - chevroletBelAir.png
+Prompt: "1955 Chevrolet Bel Air two-tone turquoise and white, classic American 50s car, chrome details, parked at a vintage diner, photorealistic, high detail"
+
+14. Jaguar E-Type 4.2 (1966) - jaguarEtype4.2.png
+Prompt: "1966 Jaguar E-Type 4.2 Series 1 roadster in red, front 3/4 view, parked in Monaco, photorealistic, high detail, cinematic lighting"
+
+15. Alfa Romeo GTA (1974) - alfaRomeoGTA.png
+Prompt: "1974 Alfa Romeo GTA in red with white racing stripes, racing on track, side view, photorealistic, high detail, motion blur"
+
+16. Ferrari 365 GTB/4 Daytona (1971) - ferrari365GTB4.png
+Prompt: "1971 Ferrari 365 GTB/4 Daytona in yellow, front 3/4 view, driving on Italian coastal road, photorealistic, high detail"
+
+17. Rolls-Royce Silver Cloud (1959) - rollsRoyceSilverCloud.png
+Prompt: "1959 Rolls-Royce Silver Cloud in black with red interior, parked in front of luxury hotel, photorealistic, high detail, elegant"
+
+18. Shelby GT500 (1967) - shelbyGT500.png
+Prompt: "1967 Shelby GT500 in black with white racing stripes, front 3/4 view, parked at classic car show, photorealistic, high detail"
