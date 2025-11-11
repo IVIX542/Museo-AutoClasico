@@ -1,14 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Versiones</title>
+    <title>Evolución del Diseño - Museo AutoClásico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6750A4;
+            --on-primary: #FFFFFF;
+            --surface: #FFFBFE;
+            --on-surface: #1C1B1F;
+            --surface-container: #F7F2FA;
+            --outline: #79747E;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+            
+            /* Dark theme colors */
+            --primary-dark: #D0BCFF;
+            --surface-dark: #1C1B1F;
+            --on-surface-dark: #E6E1E5;
+            --surface-container-dark: #2D2B32;
+            --outline-dark: #938F99;
+            --shadow-dark: 0 1px 3px rgba(0,0,0,0.3);
+            
+            /* Theme transition */
+            --transition-theme: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Dark theme */
+        [data-theme="dark"] {
+            --primary-color: var(--primary-dark);
+            --surface: var(--surface-dark);
+            --on-surface: var(--on-surface-dark);
+            --surface-container: var(--surface-container-dark);
+            --outline: var(--outline-dark);
+            --shadow: var(--shadow-dark);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--on-surface);
+            background-color: var(--surface);
+            transition: var(--transition-theme);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--on-primary);
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 0.5rem;
+        }
+        
+        .version-container {
+            margin: 3rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .version-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .version-header {
+            background-color: var(--primary-color);
+            color: var(--on-primary);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .version-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .version-number {
+            background-color: var(--on-primary);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .version-description {
+            background-color: var(--surface-container);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition-theme);
+        }
+        
+        .version-iframe {
+            width: 100%;
+            border: none;
+            height: 600px;
+            background-color: white;
+        }
+        
+        footer {
+            background-color: var(--surface-container);
+            color: var(--on-surface);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 1px solid var(--outline);
+            transition: var(--transition-theme);
+        }
+        
+        /* Theme toggle button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--on-primary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+        
+        /* Hide the appropriate icon based on theme */
+        [data-theme="dark"] .theme-icon.sun,
+        :not([data-theme]) .theme-icon.moon {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .version-iframe {
+                height: 400px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <iframe src="versiones/v1.html" frameborder="0" width="100%" height="500vh"></iframe>
-    <iframe src="versiones/v2.html" frameborder="0" width="100%" height="500vh"></iframe>
-    <iframe src="versiones/v3.html" frameborder="0" width="100%" height="500vh"></iframe>
-    <iframe src="versiones/v4.html" frameborder="0" width="100%" height="500vh"></iframe>
+    <header>
+        <div class="header-content">
+            <div>
+                <h1>Evolución del Diseño</h1>
+                <div class="subtitle">Museo AutoClásico - Versiones del Proyecto</div>
+            </div>
+            <button class="theme-toggle" aria-label="Cambiar tema">
+                <svg class="theme-icon sun" viewBox="0 0 24 24">
+                    <path d="M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/>
+                </svg>
+                <svg class="theme-icon moon" viewBox="0 0 24 24">
+                    <path d="M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Versión 1 -->
+        <div class="version-container">
+            <div class="version-header">
+                <div class="version-title">Versión Inicial</div>
+                <div class="version-number">V1</div>
+            </div>
+            <div class="version-description">
+                <p><strong>Rol:</strong> Eres un desarrollador Front-End experto, especializado en Material Design 3 (MD3) y en la creación de experiencias de usuario (UI/UX) excepcionales y responsivas.</p>
+                <p><strong>Objetivo:</strong> Generar el código completo para una página web estática de alta calidad para un museo ficticio de coches clásicos. La totalidad del sitio (HTML, CSS y JavaScript) debe estar contenida en un único archivo .html.</p>
+                <p><strong>Requisitos Técnicos Clave:</strong> Archivo Único, Responsividad (Mobile-First), Rendimiento, Principios de Diseño (MD3 y UI/UX), Estructura del Contenido (HTML Semántico), Funcionalidad (JavaScript Incrustado).</p>
+            </div>
+            <iframe src="versiones/v1.html" class="version-iframe" title="Versión 1"></iframe>
+        </div>
+        
+        <!-- Versión 5 -->
+        <div class="version-container">
+            <div class="version-header">
+                <div class="version-title">Sistema de Reservas</div>
+                <div class="version-number">V5</div>
+            </div>
+            <div class="version-description">
+                <p>Cambia el botón comprar entradas por un formulario para reservar fecha de visita</p>
+            </div>
+            <iframe src="versiones/v5.html" class="version-iframe" title="Versión 5"></iframe>
+        </div>
+        
+        <!-- Versión 3 -->
+        <div class="version-container">
+            <div class="version-header">
+                <div class="version-title">Interactividad Mejorada</div>
+                <div class="version-number">V3</div>
+            </div>
+            <div class="version-description">
+                <p>Necesito que se pueda hacer click en la tarjeta de cada coche, proporcionando información adicional sobre el mismo.</p>
+            </div>
+            <iframe src="versiones/v3.html" class="version-iframe" title="Versión 3"></iframe>
+        </div>
+        
+        <!-- Versión 4 -->
+        <div class="version-container">
+            <div class="version-header">
+                <div class="version-title">Refinamiento de la Experiencia</div>
+                <div class="version-number">V4</div>
+            </div>
+            <div class="version-description">
+                <p>Añade vida a la página</p>
+                <p>Elimina el botón volver arriba</p>
+            </div>
+            <iframe src="versiones/v4.html" class="version-iframe" title="Versión 4"></iframe>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p> 2025 Museo AutoClásico - Todos los derechos reservados</p>
+            <p>Diseñado con pasión por la historia del automóvil</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme management
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or use system preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // Apply saved theme or system preference
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            html.setAttribute('data-theme', 'dark');
+        }
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only apply system preference if user hasn't explicitly set a preference
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    html.setAttribute('data-theme', 'dark');
+                } else {
+                    html.removeAttribute('data-theme');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
