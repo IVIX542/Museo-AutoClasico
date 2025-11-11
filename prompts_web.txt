@@ -139,3 +139,6 @@ Añade la posibilidad de filtrar los cohes (por año, categoría, motor...)
 
 ---V8---
 Ahora, añade más coches para probar todos los filtros posibles. Recuerda proporcionarme los prompts para generar las imágenes.
+
+---V9---
+Necesito que, al abrir la card, se muestre toda la información correctamente (añade un control deslizable)
